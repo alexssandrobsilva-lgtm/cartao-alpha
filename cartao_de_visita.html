@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alpha Inteligência Tributária - Cartão Digital</title>
+    <!-- Importando fontes modernas do Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
+    
+    <!-- Ícones Lucide -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        :root {
+            /* Paleta de Cores baseada no histórico */
+            --bg-color: #1a1a1a;
+            --card-bg: #2C353F; /* Cinza chumbo azulado */
+            --text-white: #ffffff;
+            --text-grey: #cccccc;
+            
+            /* Degradê Ciano/Verde Água */
+            --gradient-start: #00ffff;
+            --gradient-end: #00cca3;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            font-family: 'Montserrat', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            color: var(--text-white);
+            padding: 20px;
+        }
+
+        /* Container do Cartão */
+        .card-container {
+            background-color: var(--card-bg);
+            width: 100%;
+            max-width: 400px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            padding: 40px 30px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        /* Efeito sutil de textura no fundo */
+        .card-container::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.03) 0%, rgba(0,0,0,0) 70%);
+            pointer-events: none;
+        }
+
+        /* Logo e Título */
+        .header {
+            margin-bottom: 10px;
+            width: 100%;
+        }
+
+        .brand-name {
+            font-family: 'Orbitron', sans-serif; /* Fonte estilo Varino/Tech */
+            font-size: 2.2rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            
+            /* Efeito Degradê no Texto */
+            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        .brand-subtitle {
+            font-size: 1.1rem;
+            font-weight: 400;
+            color: var(--gradient-start); /* Ciano sólido para leitura fácil */
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Divisor Degradê */
+        .divider {
+            width: 50px;
+            height: 4px;
+            border-radius: 2px;
+            background: linear-gradient(90deg, var(--gradient-start), var(--gradient-end));
+            margin: 10px 0 20px 0;
+        }
+
+        /* Dados Pessoais */
+        .profile-info h1 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-white);
+            margin-bottom: 5px;
+        }
+
+        .profile-info p {
+            font-size: 1rem;
+            color: var(--text-grey);
+            font-weight: 500;
+        }
+
+        /* Links de Contato */
+        .contact-links {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 10px;
+        }
+
+        .contact-btn {
+            display: flex;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 15px 20px;
+            border-radius: 12px;
+            text-decoration: none;
+            color: var(--text-white);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: var(--gradient-start);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 255, 255, 0.1);
+        }
+
+        .contact-btn i {
+            margin-right: 15px;
+            color: var(--gradient-start);
+            width: 24px;
+            height: 24px;
+        }
+
+        .contact-text {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            text-align: left;
+            flex: 1;
+        }
+
+        .contact-label {
+            font-size: 0.75rem;
+            color: var(--text-grey);
+            margin-bottom: 2px;
+        }
+
+        .contact-value {
+            font-size: 0.95rem;
+            font-weight: 600;
+            word-break: break-all; /* Para o email não quebrar o layout */
+        }
+
+        /* Botão de Compartilhar/Salvar */
+        .share-section {
+            margin-top: 20px;
+            width: 100%;
+        }
+        
+        .save-btn {
+            background: linear-gradient(90deg, var(--gradient-start), var(--gradient-end));
+            border: none;
+            width: 100%;
+            padding: 15px;
+            border-radius: 50px;
+            color: #1a1a1a;
+            font-weight: 800;
+            font-size: 1rem;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: transform 0.2s;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .save-btn:active {
+            transform: scale(0.98);
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="card-container">
+        
+        <header class="header">
+            <span class="brand-name">ALPHA</span>
+            <span class="brand-subtitle">Inteligência Tributária</span>
+        </header>
+
+        <div class="divider"></div>
+
+        <div class="profile-info">
+            <h1>Alexssandro Barros</h1>
+            <p>Advogado Tributarista</p>
+        </div>
+
+        <div class="contact-links">
+            <!-- Telefone / WhatsApp -->
+            <a href="https://wa.me/5585987820831" class="contact-btn" target="_blank">
+                <i data-lucide="phone"></i>
+                <div class="contact-text">
+                    <span class="contact-label">Ligar / WhatsApp</span>
+                    <span class="contact-value">+55 85 9.8782-0831</span>
+                </div>
+            </a>
+
+            <!-- E-mail -->
+            <a href="mailto:alpha.inteligenciatributaria@gmail.com" class="contact-btn">
+                <i data-lucide="mail"></i>
+                <div class="contact-text">
+                    <span class="contact-label">E-mail</span>
+                    <span class="contact-value" style="font-size: 0.8rem;">alpha.inteligenciatributaria@gmail.com</span>
+                </div>
+            </a>
+
+            <!-- Instagram -->
+            <a href="https://instagram.com/_alpha.it" class="contact-btn" target="_blank">
+                <i data-lucide="instagram"></i>
+                <div class="contact-text">
+                    <span class="contact-label">Instagram</span>
+                    <span class="contact-value">@_alpha.it</span>
+                </div>
+            </a>
+        </div>
+
+        <div class="share-section">
+            <button class="save-btn" onclick="shareCard()">
+                <i data-lucide="share-2"></i> Compartilhar
+            </button>
+        </div>
+
+    </div>
+
+    <script>
+        // Inicializa os ícones
+        lucide.createIcons();
+
+        function shareCard() {
+            if (navigator.share) {
+                navigator.share({
+                    title: 'Alexssandro Barros - Alpha Inteligência Tributária',
+                    text: 'Confira meu cartão de visita digital!',
+                    url: window.location.href
+                })
+                .catch((error) => console.log('Erro ao compartilhar', error));
+            } else {
+                alert('Copie o link do navegador para compartilhar!');
+            }
+        }
+    </script>
+
+</body>
+</html>
